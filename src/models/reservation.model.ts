@@ -1,4 +1,13 @@
-import { Model, Table, Column, DataType } from "sequelize-typescript";
+import {
+  Model,
+  Table,
+  Column,
+  DataType,
+  BelongsTo,
+  ForeignKey,
+} from "sequelize-typescript";
+import Customer from "./customer.model";
+import Room from "./room.model";
 
 @Table({
   tableName: "reservation",
@@ -12,11 +21,25 @@ export default class Reservation extends Model {
   })
   ReservationID?: number;
 
+  @ForeignKey(() => Customer)
+  @Column({
+    type: DataType.INTEGER,
+    field: "CustomerID",
+  })
+  CustomerID?: number;
+
+  @BelongsTo(() => Customer)
+  customer?: Customer;
+
+  @ForeignKey(() => Room)
   @Column({
     type: DataType.INTEGER,
     field: "RoomID",
   })
   RoomID?: number;
+
+  @BelongsTo(() => Room)
+  room?: Room;
 
   @Column({
     type: DataType.STRING(255),
@@ -42,3 +65,7 @@ export default class Reservation extends Model {
   })
   Status?: string;
 }
+
+// Define the foreign key relationship
+// Customer.belongsTo(Reservation, { foreignKey: "CustomerID" });
+// Reservation.hasMany(Customer, { foreignKey: "CustomerID" });

@@ -1,4 +1,12 @@
-import { Model, Table, Column, DataType } from "sequelize-typescript";
+import {
+  Model,
+  Table,
+  Column,
+  DataType,
+  ForeignKey,
+  BelongsTo,
+} from "sequelize-typescript";
+import Room from "./room.model";
 
 @Table({
   tableName: "roomfacilities",
@@ -12,11 +20,15 @@ export default class Roomfacility extends Model {
   })
   RoomFacilityID?: number;
 
+  @ForeignKey(() => Room)
   @Column({
     type: DataType.INTEGER,
     field: "RoomID",
   })
   RoomID?: number;
+
+  @BelongsTo(() => Room)
+  room?: Room;
 
   @Column({
     type: DataType.STRING(255),
