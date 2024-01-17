@@ -1,0 +1,107 @@
+{
+  "info": {
+    "_postman_id": "your_unique_postman_id",
+    "name": "HBS - Room Management",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "List Available Rooms in a Hotel",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:8000/rooms/{{hotelID}}",
+          "protocol": "http",
+          "host": ["localhost:8000"],
+          "path": ["rooms", "{{hotelID}}"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Retrieve Room Details",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:8000/rooms/details/{{roomID}}",
+          "protocol": "http",
+          "host": ["localhost:8000"],
+          "path": ["rooms", "details", "{{roomID}}"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Search Rooms",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:8000/rooms/search",
+          "protocol": "http",
+          "host": ["localhost:8000"],
+          "path": ["rooms", "search"],
+          "query": [
+            {
+              "key": "type",
+              "value": "desired_type"
+            },
+            {
+              "key": "availability",
+              "value": "true"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Add New Room",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"hotelID\": \"{{hotelID}}\",\"roomNumber\": \"101\",\"roomType\": \"standard\",\"price\": 100}"
+        },
+        "url": {
+          "raw": "http://localhost:8000/rooms/create",
+          "protocol": "http",
+          "host": ["localhost:8000"],
+          "path": ["rooms", "create"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Update Room Information",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"price\": 120}"
+        },
+        "url": {
+          "raw": "http://localhost:8000/rooms/{{roomID}}",
+          "protocol": "http",
+          "host": ["localhost:8000"],
+          "path": ["rooms", "{{roomID}}"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Delete Room",
+      "request": {
+        "method": "DELETE",
+        "url": {
+          "raw": "http://localhost:8000/rooms/{{roomID}}",
+          "protocol": "http",
+          "host": ["localhost:8000"],
+          "path": ["rooms", "{{roomID}}"]
+        }
+      },
+      "response": []
+    }
+  ]
+}

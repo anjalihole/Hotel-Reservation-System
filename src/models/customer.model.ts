@@ -31,10 +31,10 @@ export default class Customer extends Model {
   Email?: string;
 
   @Column({
-    type: DataType.INTEGER,
+    type: DataType.STRING(20),
     field: "Phone",
   })
-  Phone?: number;
+  Phone?: string;
 
   @Column({
     type: DataType.STRING(255),

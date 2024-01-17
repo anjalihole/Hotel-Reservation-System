@@ -1,0 +1,113 @@
+{
+  "info": {
+    "_postman_id": "postman_id",
+    "name": "HBS - Booking Management",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Create New Booking",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"userID\": \"{{userID}}\",\"roomID\": \"{{roomID}}\",\"checkInDate\": \"2024-01-25\",\"checkOutDate\": \"2024-01-28\"}"
+        },
+        "url": {
+          "raw": "http://localhost:8000/bookings/create",
+          "protocol": "http",
+          "host": ["localhost:8000"],
+          "path": ["bookings", "create"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Retrieve Booking Details",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8000/bookings/{{bookingID}}",
+          "protocol": "http",
+          "host": ["localhost:8000"],
+          "path": ["bookings", "{{bookingID}}"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "List User's Bookings",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8000/bookings/user/{{userID}}",
+          "protocol": "http",
+          "host": ["localhost:8000"],
+          "path": ["bookings", "user", "{{userID}}"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Update Booking Details",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"checkOutDate\": \"2024-01-29\"}"
+        },
+        "url": {
+          "raw": "http://localhost:8000/bookings/{{bookingID}}",
+          "protocol": "http",
+          "protocol": "http",
+          "host": ["localhost:8000"],
+          "path": ["bookings", "{{bookingID}}"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Cancel Booking",
+      "request": {
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8000/bookings/cancel/{{bookingID}}",
+          "protocol": "http",
+          "host": ["localhost:8000"],
+          "path": ["bookings", "cancel", "{{bookingID}}"]
+        }
+      },
+      "response": []
+    }
+  ]
+}

@@ -1,0 +1,106 @@
+{
+  "info": {
+    "_postman_id": "your_unique_postman_id",
+    "name": "HBS - User Management",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Create New User",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"username\": \"newuser\",\"password\": \"password123\",\"email\": \"newuser@example.com\",\"userType\": \"customer\"}"
+        },
+        "url": {
+          "raw": "http://localhost:8000/users/create",
+          "protocol": "http",
+          "host": ["localhost:8000"],
+          "path": ["users", "create"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Authenticate User",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"username\": \"newuser\",\"password\": \"password123\"}"
+        },
+        "url": {
+          "raw": "http://localhost:8000/users/login",
+          "protocol": "http",
+          "host": ["localhost:8000"],
+          "path": ["users", "login"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Retrieve User Information",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8000/users/{{userID}}",
+          "protocol": "http",
+          "host": ["localhost:8000"],
+          "path": ["users", "{{userID}}"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Update User Information",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"email\": \"newemail@example.com\"}"
+        },
+        "url": {
+          "raw": "http://localhost:8000/users/{{userID}}",
+          "protocol": "http",
+          "host": ["localhost:8000"],
+          "path": ["users", "{{userID}}"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Delete User Account",
+      "request": {
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8000/users/{{userID}}",
+          "protocol": "http",
+          "host": ["localhost:8000"],
+          "path": ["users", "{{userID}}"]
+        }
+      },
+      "response": []
+    }
+  ]
+}

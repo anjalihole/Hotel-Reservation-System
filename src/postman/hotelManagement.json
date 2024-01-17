@@ -1,0 +1,107 @@
+{
+  "info": {
+    "_postman_id": "your_unique_postman_id",
+    "name": "HBS - Hotel Management",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "List Available Hotels",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:8000/hotels",
+          "protocol": "http",
+          "host": ["localhost:8000"],
+          "path": ["hotels"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Retrieve Hotel Details",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:8000/hotels/{{hotelID}}",
+          "protocol": "http",
+          "host": ["localhost:8000"],
+          "path": ["hotels", "{{hotelID}}"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Search Hotels",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:8000/hotels/search",
+          "protocol": "http",
+          "host": ["localhost:8000"],
+          "path": ["hotels", "search"],
+          "query": [
+            {
+              "key": "location",
+              "value": "desired_location"
+            },
+            {
+              "key": "rating",
+              "value": "desired_rating"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Add New Hotel",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"name\": \"New Hotel\",\"address\": \"123 Main St\",\"rating\": 4.5}"
+        },
+        "url": {
+          "raw": "http://localhost:8000/hotels/create",
+          "protocol": "http",
+          "host": ["localhost:8000"],
+          "path": ["hotels", "create"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Update Hotel Information",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"rating\": 4.8}"
+        },
+        "url": {
+          "raw": "http://localhost:8000/hotels/{{hotelID}}",
+          "protocol": "http",
+          "host": ["localhost:8000"],
+          "path": ["hotels", "{{hotelID}}"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Delete Hotel",
+      "request": {
+        "method": "DELETE",
+        "url": {
+          "raw": "http://localhost:8000/hotels/{{hotelID}}",
+          "protocol": "http",
+          "host": ["localhost:8000"],
+          "path": ["hotels", "{{hotelID}}"]
+        }
+      },
+      "response": []
+    }
+  ]
+}
