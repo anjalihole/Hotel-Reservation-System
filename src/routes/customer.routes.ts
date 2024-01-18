@@ -12,6 +12,12 @@ class CustomerRoutes {
   intializeRoutes() {
     // Create a new customer
     this.router.post("/", this.controller.create);
+
+    // Retrieve a single customer by id
+    this.router.get("/:id", this.controller.findOne);
+
+    // Retrieve all customers
+    this.router.get("/", this.controller.findAll);
   }
 }
 

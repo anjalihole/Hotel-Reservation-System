@@ -1,7 +1,12 @@
+import { Op } from "sequelize";
 import Customer from "../models/customer.model";
 
 interface ICustomerRepository {
   save(user: Customer): Promise<Customer>;
+}
+
+interface SearchCondition {
+  [key: string]: any;
 }
 
 class CustomerRepository implements ICustomerRepository {
@@ -19,6 +24,29 @@ class CustomerRepository implements ICustomerRepository {
       });
     } catch (err) {
       throw new Error(`Error creating customer- ${err}`);
+    }
+  }
+
+  async getById(CustomerID: number): Promise<Customer | null> {
+    try {
+      return await Customer.findByPk(CustomerID);
+    } catch (error) {
+      throw new Error("Failed to retrieve Customer!");
+    }
+  }
+
+  async getAllCustomer(searchParams: {
+    FirstName?: string;
+  }): Promise<Customer[]> {
+    try {
+      let condition: SearchCondition = {};
+
+      if (searchParams?.FirstName)
+        condition.FirstName = { [Op.like]: `%${searchParams.FirstName}%` };
+
+      return await Customer.findAll({ where: condition });
+    } catch (error) {
+      throw new Error("Failed to retrieve Customer!");
     }
   }
 }
